@@ -33,15 +33,11 @@ module.exports = function(grunt) {
     multisync: {
 	    drives: {
 		    InstallLocation: "~",
-		    MyHardDrive: "/Users/MyUserName",
-		    MyBackupDrive: "/Volumes/MyBackupDrive",
-		    MyOtherDrive: "/Volumes/MyOtherDrive",
-		    MySpareDrive: "/Volumes/MySpareDrive",
 	    },
 	    macbook: {
 		    drives: {
-			    src:    '<%= multisync.drives.MyHardDrive %>',
-			    dest:   '<%= multisync.drives.MyBackupDrive %>'
+			    src:    '<%= multisync.drives.InstallLocation %>',
+			    dest:   '<%= multisync.drives.InstallLocation %>'
 		    },
 		    folders: [
 					{src: '/TestFolder/', dest: '/test-folder'},

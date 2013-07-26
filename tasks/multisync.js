@@ -19,8 +19,10 @@ module.exports = function (grunt) {
 
 		validation.checkDriveConfig(grunt, this.data);
 		validation.checkFoldersConfig(grunt, this.data);
-		validation.expandDrivePaths(grunt, this.data);
-		validation.checkDrivesMounted(grunt, this.data);
+		
+		// todo: come back to this once we are running
+		//validation.expandDrivePaths(grunt, this.data);
+		//validation.checkDrivesMounted(grunt, this.data);
 
 
 		grunt.log.writeln(JSON.stringify(this));

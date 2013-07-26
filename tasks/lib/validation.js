@@ -50,10 +50,6 @@ module.exports = {
 		}
 	},
 
-	expandDrivePaths: function(grunt, data) {
-
-	},
-
 	checkDrivesMounted: function(grunt, data) {
 		utils.driveMounted(grunt, 'src', data.drives.src);
 		utils.driveMounted(grunt, 'dest', data.drives.dest);
