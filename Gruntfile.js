@@ -28,6 +28,11 @@ module.exports = function(grunt) {
       tests: ['tmp'],
     },
 
+	  shell: {
+		  makedir: {
+			  command: "mkdir -p tmp/fixtures"
+		  }
+	  },
 
     // Configuration to be run (and then tested).
     multisync: {
@@ -40,12 +45,12 @@ module.exports = function(grunt) {
 			    dest:   '<%= multisync.drives.InstallLocation %>'
 		    },
 		    folders: [
-					{src: 'test/fixtures/one', dest: '/tmp/fixtures/one'},
-					{src: 'test/fixtures/one/', dest: '/tmp/fixtures/one-copied-twice'},
-					{src: 'test/fixtures/two/', dest: '/tmp/fixtures/two'},
+					{src: '/test/fixtures/one/', dest: '/tmp/fixtures/one/'},
+					{src: '/test/fixtures/one/', dest: '/tmp/fixtures/one-copied-twice/'},
+					{src: '/test/fixtures/two/', dest: '/tmp/fixtures/two/'},
 				],
 				options: {
-					// Global options go here
+					recursive : true
 				}
 			}
     },
@@ -68,13 +73,16 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
 	grunt.loadNpmTasks("grunt-rsync");
+	grunt.loadNpmTasks("grunt-shell");
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'multisync', 'nodeunit']);
+  grunt.registerTask('test', ['clean', 'shell', 'multisync:macbook', 'nodeunit']);
 
   // By default, lint and run all tests.
   grunt.registerTask('default', ['jshint', 'test']);
+
+	//grunt.registerTask('', ['clean', 'shell', 'multisync']);
 
 
 
