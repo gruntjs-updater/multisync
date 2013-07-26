@@ -70,15 +70,27 @@ grunt.initConfig({
         dest: '<%= drives.MyBackupDrive %>'
       }
     }
-  },
+  }
 })
 ```
 
+### Folders
+Internally, multisync uses the rsyncwrapper plugin. This means that a multisync folder pair is actually a single
+rsyncwrapper command and all of its options are available.
+
+At the time of writing the options are:
+
+- dryRun
+- recursive
+
+See the rsyncwrapper plugin documentation for more info.
 
 
-
+This means that all of the configuration options are available
 
 ### Options
+
+Options are
 
 
 #### options.separator
