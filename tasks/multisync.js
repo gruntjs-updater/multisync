@@ -17,6 +17,9 @@ module.exports = function (grunt) {
 		utils.checkDriveConfig(grunt, this.data);
 		utils.checkFoldersConfig(grunt, this.data);
 
+		// dont implement global option merging yet.. this can be done after syncing is working..
+
+
 
 		grunt.log.writeln(JSON.stringify(this));
 		//grunt.log.writeln(JSON.stringify(grunt.config.get('multisync.job1')));return;
