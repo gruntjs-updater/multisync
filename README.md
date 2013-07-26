@@ -27,7 +27,9 @@ grunt.initConfig({
   multisync: {
     drives: {
         MyHardDrive: "/Users/MyUserName",
-        MyBackupDrive: "/Volumes/MyBackupDrive"
+        MyBackupDrive: "/Volumes/MyBackupDrive",
+        MyOtherDrive: "/Volumes/MyOtherDrive",
+        MySpareDrive: "/Volumes/MySpareDrive",
     },
     // Configure a job to back up multiple folder pairs from one drive to another
     job1: {
