@@ -18,7 +18,7 @@ module.exports = function (grunt) {
 
 		utils.checkDriveConfig(grunt, this.data);
 		utils.checkFoldersConfig(grunt, this.data);
-
+		utils.expandDrivePaths(grunt, this.data);
 		utils.checkDrivesMounted(grunt, this.data);
 
 
