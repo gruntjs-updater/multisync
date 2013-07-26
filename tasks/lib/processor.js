@@ -7,8 +7,7 @@
  */
 
 var utils = require('./utils.js'),
-		_ = require('underscore'),
-	rsync = require("rsyncwrapper").rsync;
+		_ = require('underscore');
 
 'use strict';
 
@@ -17,7 +16,7 @@ module.exports = {
 	buildRsyncOptions: function(grunt, data) {
 		var options = {};
 		var taskList = [];
-		var dynamicTaskName = 'multisync_dynamic';
+		var dynamicTaskName = 'testing';
 
 		for (var i = 0; i < data.folders.length; i++) {
 			var folder = data.folders[i];
@@ -29,17 +28,12 @@ module.exports = {
 			// inject global options
 			_.extend(dynamic,data.options || {});
 
-			//grunt.log.writeln(utils.jsonify(dynamic));
-
-			options["dynamic_"+i] = dynamic;
+			options["dynamic_"+i] = {options: dynamic};
 			taskList.push("rsync:dynamic_"+i);
 		}
 
 		grunt.config.set('rsync', options);
 		grunt.registerTask(dynamicTaskName,taskList);
 		grunt.task.run(dynamicTaskName)
-
-		grunt.log.writeln(utils.jsonify(grunt.config.get()));
-		//grunt.log.writeln(utils.jsonify(data));
 	}
 };
