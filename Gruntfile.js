@@ -40,9 +40,9 @@ module.exports = function(grunt) {
 			    dest:   '<%= multisync.drives.InstallLocation %>'
 		    },
 		    folders: [
-					{src: '/TestFolder/', dest: '/test-folder'},
-					{src: '/TestFolder2/', dest: '/TestFolder2'},
-					{src: '/NamesDontHave/', dest: '/_to_be__the_same_'},
+					{src: 'test/fixtures/one', dest: 'tmp/fixtures/one'},
+					{src: 'test/fixtures/one/', dest: 'tmp/fixtures/one-copied-twice'},
+					{src: 'test/fixtures/two/', dest: 'tmp/fixtures/two'},
 				],
 				options: {
 					// Global options go here
