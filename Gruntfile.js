@@ -49,6 +49,9 @@ module.exports = function(grunt) {
 				}
 			}
     },
+	  rsync: {
+
+	  },
 
     // Unit tests.
     nodeunit: {
@@ -64,6 +67,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
+	grunt.loadNpmTasks("grunt-rsync");
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
@@ -71,5 +75,7 @@ module.exports = function(grunt) {
 
   // By default, lint and run all tests.
   grunt.registerTask('default', ['jshint', 'test']);
+
+
 
 };

@@ -6,9 +6,15 @@
  * Licensed under the MIT license.
  */
 
+var fs = require('fs');
+
 'use strict';
 
 module.exports = {
+
+	jsonify: function(object) {
+		return JSON.stringify(object,null,"   ");
+	},
 
 	driveMounted: function(grunt, name, mountPoint) {
 		if (this.folderExists(mountPoint) === false) {
