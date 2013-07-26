@@ -29,12 +29,21 @@ grunt.initConfig({
         MyHardDrive: "/Users/MyUserName",
         MyBackupDrive: "/Volumes/MyBackupDrive"
     },
-    options: {
-        // Task-specific options go here.
-    },
-    your_target: {
-        // Target-specific file lists and/or options go here.
-    },
+    // Configure a job to back up multiple folder pairs from one drive to another
+    job1: {
+        drives: {
+            src:    '<%= drives.MyHardDrive %>',
+            dest:   '<%= drives.MyBackupDrive %>'
+        },
+        folders: {
+            {src: '/TestFolder/', dest: '/test-folder'},
+            {src: '/TestFolder2/', dest: '/TestFolder2'},
+            {src: '/NamesDontHave/', dest: '/_to_be__the_same_'},
+        },
+        options: {
+            // Global options go here
+        }
+    }
   },
 })
 ```
