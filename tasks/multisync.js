@@ -6,7 +6,9 @@
  * Licensed under the MIT license.
  */
 
-var utils = require('./lib/utils.js');
+var utils = require('./lib/utils.js'),
+		rsync = require("rsyncwrapper").rsync;
+		//rsync(options,[callback]);
 
 'use strict';
 
@@ -17,8 +19,7 @@ module.exports = function (grunt) {
 		utils.checkDriveConfig(grunt, this.data);
 		utils.checkFoldersConfig(grunt, this.data);
 
-		// dont implement global option merging yet.. this can be done after syncing is working..
-
+		utils.checkDrivesMounted(grunt, this.data);
 
 
 		grunt.log.writeln(JSON.stringify(this));

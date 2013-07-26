@@ -46,7 +46,26 @@ module.exports = {
 				grunt.fail.warn("Please check to see if any folders are missing dest parameters");
 			}
 		}
+	},
 
+	checkDrivesMounted: function(grunt, data) {
+		this.driveMounted(grunt, 'src', data.drives.src);
+		this.driveMounted(grunt, 'dest', data.drives.dest);
+	},
+
+	driveMounted: function(grunt, name, mountPoint) {
+		if (this.folderExists(mountPoint) === false) {
+			grunt.log.error(name+' not mounted: '+mountPoint);
+			grunt.fail.warn("Drive not mounted.. Please check your system");
+		}
+	},
+
+	folderExists: function(folder) {
+		try {
+			return fs.lstatSync(folder).isDirectory();
+		}
+		catch (e) {}
+		return false
 	}
 
 };
