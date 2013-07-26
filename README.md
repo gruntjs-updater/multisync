@@ -52,7 +52,7 @@ grunt.initConfig({
 
 ### Drives
 
-Drive is a list of drives (or folders) that you want to copy files from or too.
+Drive is a list of drives (or folders) that you want to copy files from or to.
 In the example config we have two drives configured, a local hard drive 'MyHardDrive' and
 a backup hard drive MyBackupDrive. In the next section where you configure a sync 'job' you can reference
 these drives like this.
@@ -72,7 +72,7 @@ grunt.initConfig({
     }
   },
 })
-
+```
 
 
 
