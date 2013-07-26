@@ -28,8 +28,12 @@ module.exports = function(grunt) {
       tests: ['tmp'],
     },
 
+
     // Configuration to be run (and then tested).
     multisync: {
+		  drives: {
+			  mydrive: "test"
+		  },
       default_options: {
         options: {
         },

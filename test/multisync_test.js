@@ -27,6 +27,11 @@ exports.multisync = {
     // setup here if necessary
     done();
   },
+	check_drives: function(test) {
+		test.expect(1);
+		test.equal();
+		test.done();
+	},
   default_options: function(test) {
     test.expect(1);
 

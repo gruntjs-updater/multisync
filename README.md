@@ -25,17 +25,50 @@ In your project's Gruntfile, add a section named `multisync` to the data object 
 ```js
 grunt.initConfig({
   multisync: {
+    drives: {
+        MyHardDrive: "/Users/MyUserName",
+        MyBackupDrive: "/Volumes/MyBackupDrive"
+    },
     options: {
-      // Task-specific options go here.
+        // Task-specific options go here.
     },
     your_target: {
-      // Target-specific file lists and/or options go here.
+        // Target-specific file lists and/or options go here.
     },
   },
 })
 ```
 
+### Drives
+
+Drive is a list of drives (or folders) that you want to copy files from or too.
+In the example config we have two drives configured, a local hard drive 'MyHardDrive' and
+a backup hard drive MyBackupDrive. In the next section where you configure a sync 'job' you can reference
+these drives like this.
+
+```js
+grunt.initConfig({
+  multisync: {
+    drives: {
+        MyHardDrive: "/Users/MyUserName",
+        MyBackupDrive: "/Volumes/MyBackupDrive"
+    },
+    macbook: {
+      drives: {
+        src: '<%= drives.MyHardDrive %>',
+        dest: '<%= drives.MyBackupDrive %>'
+      }
+    }
+  },
+})
+
+
+
+
+
+
 ### Options
+
 
 #### options.separator
 Type: `String`
