@@ -9,7 +9,7 @@
 'use strict';
 
 module.exports = {
-	
+
 	driveMounted: function(grunt, name, mountPoint) {
 		if (this.folderExists(mountPoint) === false) {
 			grunt.log.error(name+' not mounted: '+mountPoint);

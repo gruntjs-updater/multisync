@@ -6,8 +6,9 @@
  * Licensed under the MIT license.
  */
 
-var utils = require('./lib/utils.js'),
-		rsync = require("rsyncwrapper").rsync;
+var rsync = require("rsyncwrapper").rsync,
+		utils = require('./lib/utils.js'),
+		validation = require('./lib/validation.js');
 		//rsync(options,[callback]);
 
 'use strict';
@@ -16,10 +17,10 @@ module.exports = function (grunt) {
 
 	grunt.registerMultiTask('multisync', 'Sync multiple folder pairs across locations', function () {
 
-		utils.checkDriveConfig(grunt, this.data);
-		utils.checkFoldersConfig(grunt, this.data);
-		utils.expandDrivePaths(grunt, this.data);
-		utils.checkDrivesMounted(grunt, this.data);
+		validation.checkDriveConfig(grunt, this.data);
+		validation.checkFoldersConfig(grunt, this.data);
+		validation.expandDrivePaths(grunt, this.data);
+		validation.checkDrivesMounted(grunt, this.data);
 
 
 		grunt.log.writeln(JSON.stringify(this));

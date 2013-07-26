@@ -6,7 +6,7 @@
  * Licensed under the MIT license.
  */
 
-var utils = require('utils.js');
+var utils = require('./utils.js');
 
 'use strict';
 
