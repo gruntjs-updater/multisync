@@ -44,7 +44,7 @@ module.exports = function (grunt) {
 
 			//grunt.log.writeln(utils.jsonify(dynamic));
 
-			options["dynamic_"+i] = dynamic;
+			options["dynamic_"+i] = {options: dynamic};
 			taskList.push("rsync:dynamic_"+i);
 		}
 
