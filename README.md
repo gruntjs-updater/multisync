@@ -26,6 +26,7 @@ In your project's Gruntfile, add a section named `multisync` to the data object 
 grunt.initConfig({
   multisync: {
     drives: {
+        InstallLocation: "~",
         MyHardDrive: "/Users/MyUserName",
         MyBackupDrive: "/Volumes/MyBackupDrive",
         MyOtherDrive: "/Volumes/MyOtherDrive",

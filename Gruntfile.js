@@ -31,25 +31,27 @@ module.exports = function(grunt) {
 
     // Configuration to be run (and then tested).
     multisync: {
-		  drives: {
-			  mydrive: "test"
-		  },
-      default_options: {
-        options: {
-        },
-        files: {
-          'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123'],
-        },
-      },
-      custom_options: {
-        options: {
-          separator: ': ',
-          punctuation: ' !!!',
-        },
-        files: {
-          'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123'],
-        },
-      },
+	    drives: {
+		    InstallLocation: "~",
+		    MyHardDrive: "/Users/MyUserName",
+		    MyBackupDrive: "/Volumes/MyBackupDrive",
+		    MyOtherDrive: "/Volumes/MyOtherDrive",
+		    MySpareDrive: "/Volumes/MySpareDrive",
+	    },
+	    macbook: {
+		    drives: {
+			    src:    '<%= multisync.drives.MyHardDrive %>',
+			    dest:   '<%= multisync.drives.MyBackupDrive %>'
+		    },
+		    folders: [
+					{src: '/TestFolder/', dest: '/test-folder'},
+					{src: '/TestFolder2/', dest: '/TestFolder2'},
+					{src: '/NamesDontHave/', dest: '/_to_be__the_same_'},
+				],
+				options: {
+					// Global options go here
+				}
+			}
     },
 
     // Unit tests.
