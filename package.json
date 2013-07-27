@@ -1,7 +1,7 @@
 {
   "name": "grunt-multisync",
   "description": "syncing multiple folder pairs across drives/locations",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "homepage": "https://github.com/jaetask/multisync",
   "author": {
     "name": "Jae Task",
@@ -27,11 +27,11 @@
   "scripts": {
     "test": "grunt test"
   },
-	"dependencies": {
-		"underscore": "~1.5.1",
-		"rsyncwrapper": "0.0.13",
-		"grunt-rsync": "~0.2.0"
-	},
+  "dependencies": {
+    "underscore": "~1.5.1",
+    "rsyncwrapper": "0.0.13",
+    "grunt-rsync": "~0.2.0"
+  },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.0",
     "grunt-contrib-clean": "~0.4.0",
