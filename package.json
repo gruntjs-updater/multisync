@@ -42,6 +42,10 @@
     "grunt": "~0.4.1"
   },
   "keywords": [
-    "gruntplugin"
+    "rsync",
+	  "multi",
+	  "site",
+	  "grunt",
+	  "gruntplugin"
   ]
 }
