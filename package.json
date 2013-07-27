@@ -1,7 +1,7 @@
 {
   "name": "grunt-multisync",
   "description": "syncing multiple folder pairs across drives/locations",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "homepage": "https://github.com/jaetask/multisync",
   "author": {
     "name": "Jae Task",
