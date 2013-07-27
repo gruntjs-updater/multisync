@@ -74,16 +74,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
 	grunt.loadNpmTasks("grunt-rsync");
 	grunt.loadNpmTasks("grunt-shell");
+	grunt.loadNpmTasks('grunt-release');
 
-  // Whenever the "test" task is run, first clean the "tmp" dir, then run this
-  // plugin's task(s), then test the result.
   grunt.registerTask('test', ['clean', 'shell', 'multisync:macbook', 'nodeunit']);
-
-  // By default, lint and run all tests.
   grunt.registerTask('default', ['jshint', 'test']);
-
-	//grunt.registerTask('', ['clean', 'shell', 'multisync']);
-
-
 
 };

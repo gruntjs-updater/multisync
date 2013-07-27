@@ -76,37 +76,31 @@ grunt.initConfig({
 ```
 
 ### Folders
-Internally, multisync uses the rsyncwrapper plugin. This means that a multisync folder pair is actually a single
-rsyncwrapper command and all of its options are available.
 
-At the time of writing the options are:
+```js
+grunt-multisync
+    grunt-rsync
+        rsyncwrapper
+```
 
-- dryRun
-- recursive
+Internally, multisync uses the grunt-rsync plugin which internally uses the node rsyncwrapper library.
 
+Because multi sync passes all params direct through to the grunt-sync plugin, which exposes all of the
+rsyncwrapper params you are able to configure simple or very complex data syncs.
+
+See the grunt-plugin documentation for more info.
 See the rsyncwrapper plugin documentation for more info.
 
 
-This means that all of the configuration options are available
-
 ### Options
 
-Options are
+Options are globally copied into all of the folder pairs.
+When an option is already set in an individual folder pair the global option is ignored.
 
 
-#### options.separator
-Type: `String`
-Default value: `',  '`
+### TODO: Usage Examples
 
-A string value that is used to do something with whatever.
 
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
-
-A string value that is used to do something else with whatever else.
-
-### Usage Examples
 
 #### Default Options
 In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
