@@ -76,6 +76,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks("grunt-shell");
 	grunt.loadNpmTasks('grunt-release');
 
+
   grunt.registerTask('test', ['clean', 'shell', 'multisync:macbook', 'nodeunit']);
   grunt.registerTask('default', ['jshint', 'test']);
 

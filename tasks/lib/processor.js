@@ -7,7 +7,7 @@
  */
 
 var utils = require('./utils.js'),
-		_ = require('underscore');
+		_ = require('lodash');
 
 'use strict';
 
