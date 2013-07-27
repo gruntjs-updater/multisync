@@ -7,7 +7,7 @@
  */
 
 var utils = require('./utils.js'),
-		_ = require('lodash');
+		_ = require('./../../node_modules/lodash');
 
 'use strict';
 
