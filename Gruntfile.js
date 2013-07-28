@@ -36,13 +36,10 @@ module.exports = function(grunt) {
 
     // Configuration to be run (and then tested).
     multisync: {
-	    drives: {
-		    InstallLocation: "~",
-	    },
 	    macbook: {
 		    drives: {
-			    src:    '<%= multisync.drives.InstallLocation %>',
-			    dest:   '<%= multisync.drives.InstallLocation %>'
+			    src:    '<%= multisync.options.drives.InstallLocation %>',
+			    dest:   '<%= multisync.options.drives.InstallLocation %>'
 		    },
 		    folders: [
 					{src: '/test/fixtures/one/', dest: '/tmp/fixtures/one/'},
@@ -52,11 +49,13 @@ module.exports = function(grunt) {
 				options: {
 					recursive : true
 				}
-			}
+			},
+	    options: {
+		    drives: {
+			    InstallLocation: "~"
+		    }
+	    }
     },
-	  rsync: {
-
-	  },
 
     // Unit tests.
     nodeunit: {
