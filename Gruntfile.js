@@ -79,5 +79,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('test', ['clean', 'shell', 'multisync:macbook', 'nodeunit']);
   grunt.registerTask('default', ['jshint', 'test']);
+	grunt.registerTask('multisync-rysnc', ['rsync']);
 
 };
