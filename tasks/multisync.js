@@ -17,25 +17,27 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('multisync', 'Sync multiple folder pairs across locations', function () {
 
-		this.data = grunt.config.get('multisync.'+this.args) || {};
-		this.data.taskName = this.args[0];
+		var data = grunt.config.get('multisync.'+this.args) || {};
+		data.taskName = this.args[0];
 
-		grunt.log.writeln(utils.jsonify(this.data));
+		grunt.verbose.writeln(utils.jsonify(data));
 
-		validation.checkDriveConfig(grunt, this.data);
-		validation.checkFoldersConfig(grunt, this.data);
-		utils.expandDrivePaths(grunt, this.data);
-		validation.checkDrivesMounted(grunt, this.data);
-		processor.buildRsyncOptions(grunt, this.data);
+		validation.checkDriveConfig(grunt, data);
+		validation.checkFoldersConfig(grunt, data);
+		utils.expandDrivePaths(grunt, data);
+		validation.checkDrivesMounted(grunt, data);
+		processor.buildRsyncOptions(grunt, data);
 
 	});
 
 	/**
-	 * This is taken directly from the grunt-rsync wrapper.. All credit is due..
+	 * This is taken directly from the grunt-rsync plugin.. All credit is due!
 	 *
-	 * I have imported the function directly for the moment because I have having
-	 * problems calling the plugin interannly within my plugin without users needing
-	 * to also install it.
+	 * I have imported the function directly for the moment because I am having
+	 * problems calling the grunt-plugin internally from within my plugin without
+	 * users needing to also install it.
+	 *
+	 * I want this to be a complete wrapper and will come back to this with some trickery :)
 	 */
 	grunt.task.registerMultiTask("rsync","Performs rsync tasks.",function () {
 

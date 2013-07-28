@@ -17,14 +17,14 @@ module.exports = {
 		var options = {};
 		var taskList = [];
 
-		grunt.verbose.writeln('Generating '+ data.folders.length +' rsync tasks for ' + data.nameArgs);
+		grunt.verbose.writeln('Generating '+ data.folders.length +' rsync tasks for multisync:' + data.taskName);
 
 		for (var i = 0; i < data.folders.length; i++) {
 
 			var counter = i+1;
 			var folder = data.folders[i];
 			var dynamic = folder; // clone?
-			var dynamicTaskName = 'dynamic_'+counter;
+			var dynamicTaskName = data.taskName+'_'+counter;
 
 			grunt.verbose.writeln('Folder pair ('+dynamicTaskName+')');
 
@@ -42,19 +42,12 @@ module.exports = {
 		}
 
 		grunt.verbose.writeln('- rsync config set to:');
-		grunt.log.writeln(utils.jsonify(options));
+		grunt.verbose.writeln(utils.jsonify(options));
 		grunt.verbose.writeln('- registered task with task list:');
-		grunt.log.writeln(utils.jsonify(taskList));
-
-
+		grunt.verbose.writeln(utils.jsonify(taskList));
 
 		grunt.config.set('rsync', options);
-		grunt.registerTask(data.taskName,'rsync');
-
-		grunt.verbose.writeln('- grunt config now looks like this');
-		grunt.log.writeln(utils.jsonify(grunt.config.get()));
-
-
+		grunt.registerTask(data.taskName, taskList);
 		grunt.task.run(data.taskName)
 	}
 };
