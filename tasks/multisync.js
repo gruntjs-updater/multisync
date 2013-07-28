@@ -14,11 +14,12 @@ var processor = require('./lib/processor.js'),
 
 module.exports = function (grunt) {
 
-	grunt.registerMultiTask('multisync', 'Sync multiple folder pairs across locations', function () {
+	grunt.registerTask('multisync', 'Sync multiple folder pairs across locations', function () {
 
-		//grunt.log.writeln(utils.jsonify(this));
+		this.data = grunt.config.get('multisync.'+this.args) || {};
+		this.data.taskName = this.args[0];
 
-		this.data.taskName = this.nameArgs+'___unique';
+		grunt.log.writeln(utils.jsonify(this.data));
 
 		validation.checkDriveConfig(grunt, this.data);
 		validation.checkFoldersConfig(grunt, this.data);
