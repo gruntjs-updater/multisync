@@ -107,4 +107,4 @@ When an option is already set in an individual folder pair the global option is 
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-V1.0.0 is coming today :)
+V1.0.1 is released and available via npm. This is a feature complete release.
