@@ -47,8 +47,15 @@ module.exports = {
 		grunt.verbose.writeln('- registered task with task list:');
 		grunt.log.writeln(utils.jsonify(taskList));
 
+
+
 		grunt.config.set('rsync', options);
 		grunt.registerTask(data.nameArgs,taskList);
+
+		grunt.verbose.writeln('- grunt config now looks like this');
+		grunt.log.writeln(utils.jsonify(grunt.config.get()));
+
+
 		grunt.task.run(data.nameArgs)
 	}
 };
