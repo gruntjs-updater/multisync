@@ -16,7 +16,6 @@ module.exports = {
 	buildRsyncOptions: function(grunt, data) {
 		var options = {};
 		var taskList = [];
-		//var dynamicTaskName = 'testing';
 
 		grunt.verbose.writeln('Generating '+ data.folders.length +' rsync tasks for ' + data.nameArgs);
 
@@ -50,12 +49,12 @@ module.exports = {
 
 
 		grunt.config.set('rsync', options);
-		grunt.registerTask(data.nameArgs,taskList);
+		grunt.registerTask(data.taskName,'rsync');
 
 		grunt.verbose.writeln('- grunt config now looks like this');
 		grunt.log.writeln(utils.jsonify(grunt.config.get()));
 
 
-		grunt.task.run(data.nameArgs)
+		grunt.task.run(data.taskName)
 	}
 };

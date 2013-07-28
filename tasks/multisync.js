@@ -18,7 +18,7 @@ module.exports = function (grunt) {
 
 		//grunt.log.writeln(utils.jsonify(this));
 
-		this.data.nameArgs = this.nameArgs;
+		this.data.taskName = this.nameArgs+'___unique';
 
 		validation.checkDriveConfig(grunt, this.data);
 		validation.checkFoldersConfig(grunt, this.data);
