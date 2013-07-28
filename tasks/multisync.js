@@ -16,6 +16,10 @@ module.exports = function (grunt) {
 
 	grunt.registerMultiTask('multisync', 'Sync multiple folder pairs across locations', function () {
 
+		//grunt.log.writeln(utils.jsonify(this));
+
+		this.data.nameArgs = this.nameArgs;
+
 		validation.checkDriveConfig(grunt, this.data);
 		validation.checkFoldersConfig(grunt, this.data);
 		utils.expandDrivePaths(grunt, this.data);
