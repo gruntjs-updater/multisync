@@ -49,7 +49,7 @@ module.exports = {
 
 
 		grunt.config.set('rsync', options);
-		grunt.registerTask(data.taskName,'multisync-rysnc');
+		grunt.registerTask(data.taskName,'rsync');
 
 		grunt.verbose.writeln('- grunt config now looks like this');
 		grunt.log.writeln(utils.jsonify(grunt.config.get()));
