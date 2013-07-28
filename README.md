@@ -25,26 +25,30 @@ In your project's Gruntfile, add a section named `multisync` to the data object 
 ```js
 grunt.initConfig({
   multisync: {
-    drives: {
-        InstallLocation: "~",
-        MyHardDrive: "/Users/MyUserName",
-        MyBackupDrive: "/Volumes/MyBackupDrive",
-        MyOtherDrive: "/Volumes/MyOtherDrive",
-        MySpareDrive: "/Volumes/MySpareDrive",
+    options: {
+        drives: {
+            InstallLocation: "~",
+            MyHardDrive: "/Users/MyUserName",
+            MyBackupDrive: "/Volumes/MyBackupDrive",
+            MyOtherDrive: "/Volumes/MyOtherDrive",
+            MySpareDrive: "/Volumes/MySpareDrive",
+        }
     },
     // Configure a job to back up multiple folder pairs from one drive to another
-    job1: {
+    laptop: {
         drives: {
-            src:    '<%= drives.MyHardDrive %>',
-            dest:   '<%= drives.MyBackupDrive %>'
+            src:    '<%= multisync.options.drives.MyHardDrive %>',
+            dest:   '<%= multisync.options.drives.MyBackupDrive %>'
         },
         folders: {
-            {src: '/TestFolder/', dest: '/test-folder'},
+            {src: '/TestFolder/', dest: '/test-folder', recursive: false},
             {src: '/TestFolder2/', dest: '/TestFolder2'},
             {src: '/NamesDontHave/', dest: '/_to_be__the_same_'},
         },
         options: {
-            // Global options go here
+            // any rsyncwrapper options here get allpied to ALL folder pairs
+            recursive: true,
+            dryRun: false
         }
     }
   },
@@ -58,17 +62,21 @@ In the example config we have two drives configured, a local hard drive 'MyHardD
 a backup hard drive MyBackupDrive. In the next section where you configure a sync 'job' you can reference
 these drives like this.
 
+You can specify a "~" if you want to start in the current working directory of your plugin
+
 ```js
 grunt.initConfig({
   multisync: {
-    drives: {
-        MyHardDrive: "/Users/MyUserName",
-        MyBackupDrive: "/Volumes/MyBackupDrive"
+    options: {
+        drives: {
+            MyHardDrive: "/Users/MyUserName",
+            MyBackupDrive: "/Volumes/MyBackupDrive"
+        }
     },
     macbook: {
       drives: {
-        src: '<%= drives.MyHardDrive %>',
-        dest: '<%= drives.MyBackupDrive %>'
+        src: '<%= multisync.options.drives.MyHardDrive %>',
+        dest: '<%= multisync.options.drives.MyBackupDrive %>'
       }
     }
   }
@@ -77,19 +85,16 @@ grunt.initConfig({
 
 ### Folders
 
+Because multisync consumes the grunt-rsync plugin which uses rsyncwrapper, it exposes all of the options
+that are available in rsyncwrapper.
+
 ```js
 grunt-multisync
     grunt-rsync
         rsyncwrapper
 ```
 
-Internally, multisync uses the grunt-rsync plugin which internally uses the node rsyncwrapper library.
-
-Because multi sync passes all params direct through to the grunt-sync plugin, which exposes all of the
-rsyncwrapper params you are able to configure simple or very complex data syncs.
-
-See the grunt-plugin documentation for more info.
-See the rsyncwrapper plugin documentation for more info.
+Please see the rsyncwrapper plugin documentation for more info at https://github.com/jedrichards/rsyncwrapper/
 
 
 ### Options
@@ -98,43 +103,8 @@ Options are globally copied into all of the folder pairs.
 When an option is already set in an individual folder pair the global option is ignored.
 
 
-### TODO: Usage Examples
-
-
-
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
-
-```js
-grunt.initConfig({
-  multisync: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-})
-```
-
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
-
-```js
-grunt.initConfig({
-  multisync: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-})
-```
-
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_(Nothing yet)_
+V1.0.0 is coming today :)
